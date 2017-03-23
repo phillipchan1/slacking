@@ -18,9 +18,8 @@ server.listen(port, function() {
 // Routing
 app.use('/', express.static('client/'));
 
-var users = 0;
-
 io.on('connection', function(socket) {
+	var users = 0;
 
     socket.on('user joins', function() {
         users = users + 1;

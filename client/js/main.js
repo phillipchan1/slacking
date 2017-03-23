@@ -73,20 +73,11 @@ function parseAndGetEmbedYoutubeHtml(messageText) {
 
 
 // user list
-socket.on('user list change', function(userlist) {
-    updateUserList(userlist);
+socket.on('user list change', function(numOfUsers) {
+    $('.chat-room-info .number-of-users').text(numOfUsers);
 });
-
-socket.on('disconnect', function() {
-    socket.emit('remove user', 'remove me please')
-});
-
-var updateUserList = function(userlist) {
-    $('.chat-room-info .number-of-users').text(userlist);
-};
 
 // notifications
-
 var notify = function(message) {
     var notification = $('.notification');
     notification.show();
@@ -99,8 +90,6 @@ var notify = function(message) {
 socket.on('user joins', function(message) {
     notify(`${message} has joined`);
 });
-
-
 
 // on load
 $(document).ready(function() {
