@@ -43,6 +43,14 @@
 	</div>
 </div>
 
+<div id="splash">
+	<img src="splash.jpg" height="1200" width="1500">
+	<h3>Enter Nickname</h3>
+	<input type="text" value="" name="nickname" size="40">
+	<button type="button" onclick="saveNickname()">Enter chatroom</button>
+</div>
+
+
 <!--  notifications -->
 <div class="notification"></div>
 
@@ -57,5 +65,21 @@ https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 
 <!-- our app -->
 <script src="js/main.js"></script>
+
+<script language="javascript" type="text/javascript">
+function saveNickname() {
+	var nickname = $("#nickname").value;
+
+	if (nickname == "") {
+		alert("Please enter a nickname before entering chatroom");
+	}
+	else {
+		$("#splash").hide();
+	}
+}
+
+
+</script>
+
 </body>
 </html>
