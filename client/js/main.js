@@ -38,7 +38,7 @@ $('.chat-input').on('keypress', function(e) {
 });
 
 socket.on('chat message', function(message) {
-    $('.message-list').append($('<li>').text(`${message.username}: ${message.userMessage}`));
+    $('.message-list').append($('<li>').html(`<strong>${message.username}</strong>: ${message.userMessage}`));
 
   var embedVideoHtml = parseAndGetEmbedYoutubeHtml(message.userMessage);
 
