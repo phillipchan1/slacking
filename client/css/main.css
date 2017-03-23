@@ -3,6 +3,11 @@ body {
 	font-family: "Lato", Helvetica, Arial
 }
 
+/*8title*/
+
+.app-title {
+	display: none;
+}
 
 /* splash */
 
@@ -27,6 +32,21 @@ body {
 	width: 50%;
 	display: block;
 	margin: auto;
+	font-size: 2.5em;
+	padding: 30px 25px;
+	font-weight: 100;
+	background: transparent;
+	border: none;
+	text-align: center;
+
+	border-bottom: 1px solid #CCC;
+}
+
+.splash input:focus,
+.splash input:active {
+	outline: none;
+	border: 0;
+	border-bottom: 1px solid #CCC;
 }
 
 

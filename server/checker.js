@@ -1,16 +1,9 @@
-var shout = function() {
+var keywords =  require('./keywords');
 
+check = function(keyword) {
+	if (keywords[keyword]) {
+		return keywords[keyword];
+	} else {
+		return false;
+	}
 };
-
-
-
-
-
-
-
-
-
-
-module.exports = {
-	shout: shout
-}

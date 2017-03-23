@@ -17,8 +17,6 @@ app.use('/', express.static('client/'));
 
 var users = [];
 
-checker.checker();
-
 io.on('connection', function(socket) {
 
     socket.on('user joins', function(username) {
@@ -33,11 +31,8 @@ io.on('connection', function(socket) {
 
     socket.on('chat message', function(message) {
 
-    	if (checker.isKeyword === true) {
 
-    	} else {
-    		io.emit('chat message', message);
-    	}
+    	io.emit('chat message', message);
 
         console.log(message);
 

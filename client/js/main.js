@@ -1,8 +1,7 @@
 var socket = io();
 var username = '';
-// join chat room and save username
-socket.emit('user joins', username);
 
+// joining username
 $('.username-input').on('keypress', function(e) {
     var self = $(this);
     if (e.which === 13 && self.val() !== '') {
@@ -13,11 +12,13 @@ $('.username-input').on('keypress', function(e) {
             alert("Please enter a nickname before entering chatroom");
         } else {
             username = nickname;
-            $(".splash").hide();
-            $('.chat-window').show();
+
+            socket.emit('user joins', username);
+            $('.app-title').fadeIn(500);
+            $(".splash").fadeOut(500);
+            $('.chat-window').fadeIn(500);
+            $('.chat-window input').focus();
         }
-
-
     }
 });
 
@@ -65,7 +66,7 @@ var notify = function(message) {
     notification.text(message);
     setTimeout(function() {
         notification.fadeOut();
-    }, 2000);
+    }, 3000);
 };
 
 socket.on('user joins', function(message) {

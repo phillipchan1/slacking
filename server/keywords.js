@@ -1,7 +1,7 @@
 module.exports = {
 	"api": "Do you mean we all play instead?",
 	"down": "When something is down, that means it's time to party.",
-	"error": "Errors give you the excuse to fix it later."
+	"error": "Errors give you the excuse to fix it later.",
 	"github": "More like git some time off.",
 	"issues": "We got no time for issues when we want to slack off",
 	"jira": "Tickets schmickets, go to the beach instead.",
