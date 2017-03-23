@@ -41,9 +41,38 @@ $('.chat-input').on('keypress', function(e) {
 socket.on('chat message', function(message) {
     $('.message-list').append($('<li>').text(`${message.username}: ${message.userMessage}`));
 
+  var embedVideoHtml = parseAndGetEmbedYoutubeHtml(message.userMessage)
+  
+  if (embedVideoHtml != null || embedVideoHtml != "") {
+	  $('.message-list').append($('<li>').text(`${embedVideoHtml}')
+  }	
+
     var messageList = document.querySelector(".message-list");
     messageList.scrollTop = messageList.scrollHeight;
 });
+
+
+
+function parseAndGetEmbedYoutubeHtml(messageText) {
+	var patt = new RegExp(".*youtu\.be\/(.*)");
+	
+	var result = patt.exec(messageText);
+	
+	if (result != null) {
+		return '<iframe width="420" height="315" src="https://www.youtube.com/embed/'+result[1]+'"></iframe>'
+	}
+	
+	var patt2 = new RegExp(".*youtube\.com\/watch\?.*v\=(.*).*")
+	
+	result = patt2.exec(messageText);
+	
+	if (result != null) {
+		return '<iframe width="420" height="315" src="https://www.youtube.com/embed/'+result[1]+'"></iframe>'
+	}
+	
+	return ""
+}
+
 
 // user list
 socket.on('user list change', function(userlist) {
