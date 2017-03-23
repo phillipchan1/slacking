@@ -8,5 +8,5 @@ module.exports = {
 	"pull": "Don't pull a muscle working too hard.",
 	"push": "When you push code, you should also get a snack.",
 	"qa": "Why test when you can rest?",
-	"work": "I hope you're not being too productive.",
+	"work": "I hope you're not being too productive."
 };
