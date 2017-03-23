@@ -6,6 +6,7 @@ var checker = require('./modules/checker');
 var port = process.env.PORT || 80;
 var parser = require('body-parser');
 var youtube = require('./modules/youtube');
+var slackbot = require('./modules/slackbot');
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }));
@@ -52,4 +53,7 @@ io.on('connection', function(socket) {
 	    	io.emit('chat message', message);
 	    }
     });
+
+    slackbot.activate(io, 30000);
+
 });
