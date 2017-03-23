@@ -24,30 +24,31 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<div class="row">
-			<header class="chat-room-header">
-				<div class="title">#general</div>
-				<div class="chat-room-info">
-					<span class="number-of-users"></span> users
+	<div class="app-container">
+		<div class="splash app-window text-center">
+			<img src="splash.jpg">
+			<input type="text" placeholder="What's Your Name?" class="username-input">
+		</div>
+
+		<div class="chat-window app-window">
+			<div class="row">
+				<header class="chat-room-header">
+					<div class="title">#general</div>
+					<div class="chat-room-info">
+						<span class="number-of-users"></span> users
+					</div>
+				</header>
+				<div class="chat-container">
+
+					<ul class="message-list">
+
+					</ul>
+					<input class="chat-input" type="text" />
 				</div>
-			</header>
-			<div class="chat-container">
-
-				<ul class="message-list">
-
-				</ul>
-				<input class="chat-input" type="text" />
 			</div>
 		</div>
 	</div>
-</div>
 
-<div id="splash">
-	<img src="splash.jpg" height="1200" width="1500">
-	<h3>Enter Nickname</h3>
-	<input type="text" value="" name="nickname" size="40">
-	<button type="button" onclick="saveNickname()">Enter chatroom</button>
 </div>
 
 
@@ -67,16 +68,7 @@ https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 <script src="js/main.js"></script>
 
 <script language="javascript" type="text/javascript">
-function saveNickname() {
-	var nickname = $("#nickname").value;
 
-	if (nickname == "") {
-		alert("Please enter a nickname before entering chatroom");
-	}
-	else {
-		$("#splash").hide();
-	}
-}
 
 
 </script>
