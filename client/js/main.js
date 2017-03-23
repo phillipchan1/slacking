@@ -66,7 +66,15 @@ function parseAndGetEmbedYoutubeHtml(messageText) {
 	if (result != null) {
 		return '<iframe width="420" height="315" src="https://www.youtube.com/embed/'+result[1]+'"></iframe>'
 	}
+	
+	var patt3 = new RegExp("(.*gif|jpg|jpeg|tiff|png)")
 
+	result = patt3.exec(messageText);
+
+	if (result != null) {
+		return '<img src="'+result[1]+'">'
+	}
+	
 	return "";
 }
 
