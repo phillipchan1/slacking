@@ -7,7 +7,6 @@ $('.username-input').on('keypress', function(e) {
     if (e.which === 13 && self.val() !== '') {
         var nickname = self.val();
 
-        console.log(nickname);
         if (nickname === '') {
             alert("Please enter a nickname before entering chatroom");
         } else {
