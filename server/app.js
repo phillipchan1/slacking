@@ -4,6 +4,15 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var checker = require('./modules/checker');
 var port = process.env.PORT || 80;
+var parser = require('body-parser');
+var youtube = require('./modules/youtube');
+
+app.use(parser.json());
+app.use(parser.urlencoded({ extended: false }));
+
+youtube.getRandomVideoLink(function(link) {
+	console.log(link);
+});
 
 // connect to port
 server.listen(port, function() {
@@ -31,12 +40,16 @@ io.on('connection', function(socket) {
 	    if (checker.check(message.userMessage)) {
 	    	// buid a custom message
 
-	    	let newMessage = {
-	    		userMessage: checker.get(message.userMessage),
-	    		username: message.username
-	    	}
+	    	youtube.getRandomVideoLink(function(link) {
+				let newMessage = {
+		    		userMessage: checker.getMessage(message.userMessage) + ' ' + link,
+		    		username: message.username
+		    	};
 
-	    	io.emit('chat message', newMessage);
+		    	io.emit('chat message', newMessage);
+			});
+
+
 	    }
 	    else {
 	    	io.emit('chat message', message);

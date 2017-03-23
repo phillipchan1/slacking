@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/phillipchan2/slacking#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "nodemon": "^1.11.0",
-    "socket.io": "^1.7.3"
+    "socket.io": "^1.7.3",
+    "youtube-api": "^2.0.8"
   }
 }
