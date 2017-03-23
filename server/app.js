@@ -58,5 +58,3 @@ io.on('connection', function(socket) {
 });
 
 slackbot.activate(io, 30000);
-
-

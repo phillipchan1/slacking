@@ -28,9 +28,6 @@ var getRandomVideoLink = function(callback) {
 	  	var randomIndex = randomIntFromInterval(0, listJSON.items.length);
 	  	var randomVideoId = listJSON.items[randomIndex].snippet.resourceId.videoId;
 
-	  	console.log(randomVideoId);
-
-
 	  	callback(buildYouTubeLink(randomVideoId));
 	  });
     });
@@ -43,8 +40,6 @@ var buildYouTubeLink = function(videoID) {
 var randomIntFromInterval = function(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);
 };
-
-
 
 
 module.exports = {
