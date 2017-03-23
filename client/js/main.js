@@ -13,7 +13,7 @@ $('.username-input').on('keypress', function(e) {
         } else {
             username = nickname;
 
-            socket.emit('user joins', username);
+            socket.emit('user joins');
             $('.app-title').fadeIn(500);
             $(".splash").fadeOut(500);
             $('.chat-window').fadeIn(500);
@@ -82,7 +82,7 @@ socket.on('disconnect', function() {
 });
 
 var updateUserList = function(userlist) {
-    $('.chat-room-info .number-of-users').text(userlist.length);
+    $('.chat-room-info .number-of-users').text(userlist);
 };
 
 // notifications

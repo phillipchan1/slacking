@@ -18,18 +18,18 @@ server.listen(port, function() {
 // Routing
 app.use('/', express.static('client/'));
 
-var users = [];
+var users = 0;
 
 io.on('connection', function(socket) {
 
-    socket.on('user joins', function(username) {
-        users.push(username)
-        io.emit('user joins', username);
+    socket.on('user joins', function() {
+        users = users + 1;
         io.emit('user list change', users);
     });
 
     socket.on('disconnect', function() {
-
+    	users = users - 1;
+    	io.emit('user list change', users);
     });
 
     socket.on('chat message', function(message) {
@@ -44,8 +44,6 @@ io.on('connection', function(socket) {
 
 		    	io.emit('chat message', newMessage);
 			});
-
-
 	    }
 	    else {
 	    	io.emit('chat message', message);
