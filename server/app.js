@@ -56,7 +56,8 @@ io.on('connection', function(socket) {
 	    	io.emit('chat message', message);
 	    }
     });
-
-    slackbot.activate(io, 30000);
-
 });
+
+slackbot.activate(io, 30000);
+
+
