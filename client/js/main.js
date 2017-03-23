@@ -81,7 +81,7 @@ function parseAndGetEmbedYoutubeHtml(messageText) {
 
 // user list
 socket.on('user list change', function(numOfUsers) {
-    $('.chat-room-info .number-of-users').text(numOfUsers);
+    $('.chat-room-info .number-of-users').text(numOfUsers.length);
 });
 
 // notifications

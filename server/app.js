@@ -19,21 +19,24 @@ server.listen(port, function() {
 // Routing
 app.use('/', express.static('client/'));
 
-var users = 0;
+var socketIds = [];
 
 io.on('connection', function(socket) {
 
     socket.on('user joins', function() {
-        users = users + 1;
-        io.emit('user list change', users);
+        socketIds.push(socket.id);
+
+        io.emit('user list change', socketIds);
     });
 
     socket.on('disconnect', function() {
-    	if (users > 0) {
-    		users = users - 1;
-    	}
+    	var i = socketIds.indexOf(socket.id);
 
-    	io.emit('user list change', users);
+		if(i != -1) {
+			socketIds.splice(i, 1);
+		}
+
+    	io.emit('user list change', socketIds);
     });
 
     socket.on('chat message', function(message) {
