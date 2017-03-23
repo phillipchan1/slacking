@@ -27,7 +27,10 @@ io.on('connection', function(socket) {
     });
 
     socket.on('disconnect', function() {
-    	users = users - 1;
+    	if (users > 0) {
+    		users = users - 1;
+    	}
+
     	io.emit('user list change', users);
     });
 
