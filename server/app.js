@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var checker = require('./modules/checker');
 var port = process.env.PORT || 80;
 
 // connect to port
@@ -14,6 +15,7 @@ app.use('/', express.static('client/'));
 
 var users = [];
 
+checker.checker();
 
 io.on('connection', function(socket) {
 
