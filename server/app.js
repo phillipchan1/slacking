@@ -25,7 +25,6 @@ io.on('connection', function(socket) {
 
     socket.on('user joins', function() {
         socketIds.push(socket.id);
-
         io.emit('user list change', socketIds);
     });
 
