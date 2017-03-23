@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/phillipchan2/slacking/issues"
   },
-  "homepage": "https://github.com/phillipchan2/slacking#readme"
+  "homepage": "https://github.com/phillipchan2/slacking#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0",
+    "socket.io": "^1.7.3"
+  }
 }

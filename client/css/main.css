@@ -1,0 +1,17 @@
+.chat-container {
+	width: 100%;
+	border: 1px solid #CECECE;
+	height: 500px;
+	position: relative;
+}
+
+.chat-container input {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.text-center {
+	text-align: center;
+}
