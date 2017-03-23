@@ -59,7 +59,7 @@ function parseAndGetEmbedYoutubeHtml(messageText) {
 		return '<iframe width="420" height="315" src="https://www.youtube.com/embed/'+result[1]+'"></iframe>'
 	}
 
-	var patt2 = new RegExp(".*youtube\.com\/watch\?.*v\=(.*).*")
+	var patt2 = new RegExp(".*youtube\.com\/watch\?.*v\=([\w\d]*)")
 
 	result = patt2.exec(messageText);
 
@@ -67,7 +67,7 @@ function parseAndGetEmbedYoutubeHtml(messageText) {
 		return '<iframe width="420" height="315" src="https://www.youtube.com/embed/'+result[1]+'"></iframe>'
 	}
 	
-	var patt3 = new RegExp("(.*gif|jpg|jpeg|tiff|png)")
+	var patt3 = new RegExp("((http|www).*(gif|jpg|jpeg|tiff|png))")
 
 	result = patt3.exec(messageText);
 
