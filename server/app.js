@@ -10,10 +10,6 @@ var youtube = require('./modules/youtube');
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false }));
 
-youtube.getRandomVideoLink(function(link) {
-	console.log(link);
-});
-
 // connect to port
 server.listen(port, function() {
     console.log('Server listening at port %d', port);
