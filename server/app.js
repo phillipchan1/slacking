@@ -5,22 +5,32 @@ var io = require('socket.io')(server);
 var port = process.env.PORT || 80;
 
 // connect to port
-server.listen(port, function () {
-  console.log('Server listening at port %d', port);
+server.listen(port, function() {
+    console.log('Server listening at port %d', port);
 });
 
 // Routing
 app.use('/', express.static('client/'));
 
-io.on('connection', function(socket){
-  console.log('a user connected');
+var users = [];
 
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
 
-  socket.on('chat message', function(message){
-  	console.log(message)
-    io.emit('chat message', message);
-  });
+io.on('connection', function(socket) {
+
+    socket.on('user joins', function(username) {
+        users.push(username)
+        io.emit('user joins', username);
+        io.emit('user list change', users);
+    });
+
+    socket.on('disconnect', function() {
+
+    });
+
+    socket.on('chat message', function(message) {
+        console.log(message);
+        io.emit('chat message', message);
+    });
+
+
 });

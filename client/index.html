@@ -11,6 +11,7 @@
 	<!-- Place favicon.ico in the root directory -->
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700" rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css">
 
 </head>
@@ -25,7 +26,14 @@
 
 	<div class="container">
 		<div class="row">
+			<header class="chat-room-header">
+				<div class="title">#general</div>
+				<div class="chat-room-info">
+					<span class="number-of-users"></span> users
+				</div>
+			</header>
 			<div class="chat-container">
+
 				<ul class="message-list">
 
 				</ul>
@@ -34,6 +42,9 @@
 		</div>
 	</div>
 </div>
+
+<!--  notifications -->
+<div class="notification"></div>
 
 <!-- socket.io -->
 <script src="
