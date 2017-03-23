@@ -41,17 +41,15 @@ $('.chat-input').on('keypress', function(e) {
 socket.on('chat message', function(message) {
     $('.message-list').append($('<li>').text(`${message.username}: ${message.userMessage}`));
 
-  var embedVideoHtml = parseAndGetEmbedYoutubeHtml(message.userMessage)
+  var embedVideoHtml = parseAndGetEmbedYoutubeHtml(message.userMessage);
   
   if (embedVideoHtml != null || embedVideoHtml != "") {
-	  $('.message-list').append($('<li>').text(`${embedVideoHtml}')
+	  $('.message-list').append($('<li>').html(embedVideoHtml));
   }	
 
     var messageList = document.querySelector(".message-list");
     messageList.scrollTop = messageList.scrollHeight;
 });
-
-
 
 function parseAndGetEmbedYoutubeHtml(messageText) {
 	var patt = new RegExp(".*youtu\.be\/(.*)");
