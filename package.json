@@ -1,0 +1,19 @@
+{
+  "name": "slacking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phillipchan2/slacking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phillipchan2/slacking/issues"
+  },
+  "homepage": "https://github.com/phillipchan2/slacking#readme"
+}
