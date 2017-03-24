@@ -59,7 +59,7 @@ function parseAndGetEmbedYoutubeHtml(messageText) {
 		return '<iframe width="420" height="315" src="https://www.youtube.com/embed/'+result[1]+'"></iframe>'
 	}
 
-	var patt2 = new RegExp(".*youtube\.com\/watch\?.*v\=([\w\d]*)")
+	var patt2 = new RegExp(".*youtube\.com\/watch\?.*v\=(.*).*")
 
 	result = patt2.exec(messageText);
 
