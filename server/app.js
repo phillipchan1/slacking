@@ -19,29 +19,28 @@ server.listen(port, function() {
 // Routing
 app.use('/', express.static('client/'));
 
-var socketIds = [];
+var socketIds = {};
 
 io.on('connection', function(socket) {
 
-    socket.on('user joins', function() {
-        socketIds.push(socket.id);
-        io.emit('user list change', socketIds);
+    socket.on('user joins', function(username) {
+
+        socketIds[socket.id] = username;
+        io.emit('user joins', username);
+        io.emit('user list change', Object.keys(socketIds).length);
     });
 
     socket.on('disconnect', function() {
-    	var i = socketIds.indexOf(socket.id);
-
-		if(i != -1) {
-			socketIds.splice(i, 1);
+		if (socketIds.hasOwnProperty(socket.id)){
+			io.emit('user disconnected', socketIds[socket.id]);
+			delete socketIds[socket.id];
 		}
 
-    	io.emit('user list change', socketIds);
+    	io.emit('user list change', Object.keys(socketIds).length);
     });
 
     socket.on('chat message', function(message) {
 	    if (checker.check(message.userMessage)) {
-	    	// buid a custom message
-
 	    	youtube.getRandomVideoLink(function(link) {
 				let newMessage = {
 		    		userMessage: checker.getMessage(message.userMessage) + ' ' + link,

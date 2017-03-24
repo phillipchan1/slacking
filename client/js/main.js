@@ -12,7 +12,7 @@ $('.username-input').on('keypress', function(e) {
         } else {
             username = nickname;
 
-            socket.emit('user joins');
+            socket.emit('user joins', username);
             $('.app-title').fadeIn(500);
             $(".splash").fadeOut(500);
             $('.chat-window').fadeIn(500);
@@ -81,7 +81,7 @@ function parseAndGetEmbedYoutubeHtml(messageText) {
 
 // user list
 socket.on('user list change', function(numOfUsers) {
-    $('.chat-room-info .number-of-users').text(numOfUsers.length);
+    $('.chat-room-info .number-of-users').text(numOfUsers);
 });
 
 // notifications
@@ -96,6 +96,10 @@ var notify = function(message) {
 
 socket.on('user joins', function(message) {
     notify(`${message} has joined`);
+});
+
+socket.on('user disconnected', function(message) {
+    notify(`${message} has disconnected`);
 });
 
 // on load
